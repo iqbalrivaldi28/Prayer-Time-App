@@ -5,6 +5,8 @@ function App() {
   const [term, setTerm] = useState('Jakarta');
   const [data, setData] = useState({});
 
+  const prayerTime = ['Fajr', 'Dhuhr', 'Asr', 'Maghrib', 'Isha'];
+
   useEffect(() => {
     fetch(`http://api.aladhan.com/v1/timingsByAddress?address=${term}`)
       .then((res) => res.json())
@@ -20,39 +22,29 @@ function App() {
               <div>{data.date && data.date.gregorian.weekday.en}</div>
               <div>{data.date && data.date.readable}</div>
             </div>
-            <div>Jakarta</div>
+            <div>{term}</div>
           </div>
-          <form onSubmit={(e) => {
+          <form
+            onSubmit={(e) => {
               e.preventDefault();
-              setTerm(input)
-              setInput('')
-          }}>
+              setTerm(input);
+              setInput('');
+            }}
+          >
             <input value={input} onChange={(e) => setInput(e.target.value)} type="text" placeholder="Search Prayer Time by City" className="w-[250px] py-2 px-4 rounded-full text-[14px] text-slate-400 outline-none focus:shadow-lg" />
             <input type="submit" value="" />
           </form>
         </div>
         <div>
-          <ul className="w-[200px] bg-[#0d0d0d] flex flex-col rounded-xl py-2">
-            <li className="odd:text-[#26a767] even:text-[#dbdbd9] flex justify-between p-2">
-              <div>Fajr</div>
-              <div className="font-bold">04:40</div>
-            </li>
-            <li className="odd:text-[#26a767] even:text-[#dbdbd9] flex justify-between p-2">
-              <div>Fajr</div>
-              <div className="font-bold">04:40</div>
-            </li>
-            <li className="odd:text-[#26a767] even:text-[#dbdbd9] flex justify-between p-2">
-              <div>Fajr</div>
-              <div className="font-bold">04:40</div>
-            </li>
-            <li className="odd:text-[#26a767] even:text-[#dbdbd9] flex justify-between p-2">
-              <div>Fajr</div>
-              <div className="font-bold">04:40</div>
-            </li>
-            <li className="odd:text-[#26a767] even:text-[#dbdbd9] flex justify-between p-2">
-              <div>Fajr</div>
-              <div className="font-bold">04:40</div>
-            </li>
+          <ul className="w-[400px] flex flex-col rounded-xl py-4 px-4">
+            {data && data.timings && prayerTime.map((p) => {
+                return (
+                  <li className="odd:text-[#26a767] even:text-[#dbdbd9] flex justify-between p-2">
+                    <div className='text-[25px]'>{p}</div>
+                    <div className="font-bold text-[25px]">{data.timings[p]}</div>
+                  </li>
+                );
+              })}
           </ul>
         </div>
       </div>
