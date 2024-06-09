@@ -1,21 +1,26 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from 'react';
+import reactLogo from './assets/react.svg';
+import viteLogo from '/vite.svg';
+import './App.css';
 
 function App() {
   const [count, setCount] = useState(() => {
-    const savedCount = localStorage.getItem('angka')
-    return savedCount !== null ? parseInt(savedCount) : 0
-  })
+    const savedCount = localStorage.getItem('angka');
+    return savedCount !== null ? parseInt(savedCount) : 0;
+  });
 
   const handleClick = () => {
     setCount((prevCount) => {
       const newCount = prevCount + 1;
-      localStorage.setItem('angka', newCount)
-      return newCount
-    })
-  }
+      localStorage.setItem('angka', newCount);
+      return newCount;
+    });
+  };
+
+  const handleRemove = () => {
+    setCount(0)
+    localStorage.setItem('angka', 0)
+  };
 
   return (
     <>
@@ -29,18 +34,17 @@ function App() {
       </div>
       <h1>Vite + React</h1>
       <div className="card">
-        <button onClick={handleClick}>
-          count is {count}
-        </button>
+        <button onClick={handleClick}>count is {count}</button>
+        <br />
+        <br />
+        <button onClick={handleRemove}>Clear Count</button>
         <p>
           Edit <code>src/App.jsx</code> and save to test HMR
         </p>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <p className="read-the-docs">Click on the Vite and React logos to learn more</p>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
