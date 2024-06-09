@@ -36,7 +36,7 @@ function App() {
           </form>
         </div>
         <div>
-          <ul className="w-[400px] flex flex-col rounded-xl py-4 px-4">
+          <ul className="w-[400px] bg-[#0d0d0d] flex flex-col rounded-xl py-4 px-4">
             {data && data.timings && prayerTime.map((p) => {
                 return (
                   <li className="odd:text-[#26a767] even:text-[#dbdbd9] flex justify-between p-2">
