@@ -36,12 +36,12 @@ function App() {
           </form>
         </div>
         <div>
-          <ul className="w-[400px] bg-[#0d0d0d] flex flex-col rounded-xl py-4 px-4">
+          <ul className="w-[400px]  bg-white bg-opacity-70 flex flex-col rounded-xl py-4 px-4">
             {data && data.timings && prayerTime.map((p) => {
                 return (
-                  <li className="odd:text-[#26a767] even:text-[#dbdbd9] flex justify-between p-2">
+                  <li className="odd:text-[#26a767] even:text-[#0d0d0d] font-bold flex justify-between p-2">
                     <div className='text-[25px]'>{p}</div>
-                    <div className="font-bold text-[25px]">{data.timings[p]}</div>
+                    <div className="font-bold text-[25px] ">{data.timings[p]}</div>
                   </li>
                 );
               })}
