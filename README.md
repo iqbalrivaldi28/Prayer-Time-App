@@ -10,4 +10,4 @@ Currently, two official plugins are available:
 - Tailwind: https://tailwindcss.com/
 
 - Note:
-I have 2 branches here, the master branch contains the complete program code and on the refactor-clean-code branch I break the program code into small components to make it easier to read the code
+I have 2 branches here, the master branch contains the complete program code and on the refactor-clean-code branch I break the program code into small components to make it easier to read the code.
